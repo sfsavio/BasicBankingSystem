@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include<clocale>
+#include<locale>
 
 std::string checkBook(std::vector<std::string> books, std::vector<std::string> status);
 std::string createBook(std::vector<std::string> books, std::string bookName, std::vector<std::string> status);
