@@ -19,8 +19,18 @@ int main() {
         
     books.shrink_to_fit();
     //std::cout << books.size();
-   
-    checkBook(books, status); 
+    int op;
+    std::cin>>op;
+    switch(op) {
+        case 1:
+              checkBook(books, status);   
+              break;
+        default:
+              std::cout<<"default";
+        break;
+    }
+    
+   // checkBook(books, status); 
 
     return 0;
 }
