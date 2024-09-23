@@ -1,81 +1,64 @@
 #include<iostream>
-#include<string>
 #include<vector>
+#include<string>
+#include<clocale>
 
-using namespace std;
+std::string checkBook(std::vector<std::string> books, std::vector<std::string> status);
+std::string createBook(std::vector<std::string> books, std::string bookName, std::vector<std::string> status);
+//std::string rentBook(std::vector<std::string> books);
+//std::string returnBook(std::vector<std::string> books);
 
-void selectOption(); 
-void printLoginMenu();
-void printCadMenu();
-void cadUser();
 
-void printMainMenu () {
-	std::cout<<"Bem vindo ao BANCO IFMG!!"<<endl;
-	std::cout<<"1. LOGIN\n" << "2. CRIAR CONTA\n" << "0. SAIR\n";
+int main() {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
 
-	selectOption();
+    std::cout << "Bem vindo a Biblioteca Do IFMG - Por Favor Selecione Uma Opção:\n1. Cadastrar Livro \n2. Consultar Livro\n3. Alugar Livro\n4. Devolver Livro\n5. Sair";
+    
+    std::vector<std::string> books; 
+    std::vector<std::string> status;
+    
+   
+
+    
+    books.shrink_to_fit();
+    //std::cout << books.size();
+   
+    checkBook(books, status);
+
+    
+
+    return 0;
+}
+std::string checkBook(std::vector<std::string> books, std::vector<std::string> status) {
+    std::string bookName;
+    std::cout << "\nDigite o nome livro para verificar se ele ja existe no sistema: \n";
+    std::getline(std::cin, bookName);
+
+    for (int i = 0; i < books.size(); i++)
+    {
+        if (bookName == books[i]){
+            std::cout << "Book Found In Position: " << i << " -> book_name: " << books[i] << std::endl;
+            std::cout << status[i];
+            checkBook(books, status);
+        } else {
+            
+        }
+    }
+    createBook(books, bookName, status);    
 }
 
- int mainMenu(int *ptr) {  // *ptr = &op
-	std::cout<< endl <<"*ptr: "<<  *ptr << endl;
-	switch (*ptr) {
-	case 1:
-		printLoginMenu();
-		break;
-	case 2:
-		printCadMenu();
-		break;
-	case 0:
-		std::cout << "\nSaindo..\n";
-		return 0;
-		break;
-	default: 
-		std::cout<< "Entre uma opcao valida..";
-		selectOption();
-		break;
-	}
-}
+std::string createBook(std::vector<std::string> books, std::string bookName, std::vector<std::string> status) {
+    std::cout << "\nBook: \"" << bookName << "\" added.." << std::endl;
+    books.push_back(bookName);
 
- void cadUser() {
-	 std::vector<std::vector<strings> data> index;
-	 
- }
+    std::string status_positivo = "status: Disponivel";
+    std::string status_negativo = "status: Indisponivel";
+    status.push_back(status_positivo);
 
-int main () {	
-	system("cls");
-	system("color a");
+    for (int i = 0; i < books.size(); i++) {
+        std::cout <<"Book: " << books[i] << "\t\t\t" << status[i] << "\n";
+    }
 
-	printMainMenu();
-	
-	system("pause");
-}
-
-void selectOption() {
-	int option;
-	std::cin >> option;
-	std::cout << endl;
-
-	mainMenu(&option);
-}
-void printCadMenu() {
-	system("cls");
-	char cad_op;
-	std::cout << "Deseja cadastrar novo user? (s/n)\n";
-	std::cin >> cad_op;
-	switch (cad_op)
-	{
-	case 'n':
-		std::cout << "Nao";
-		break;
-	case 's':
-		std::cout << "sim";
-		cadMenu();
-	default:
-		break;
-	}
-}
-
-void printLoginMenu() {
-
-
+    checkBook(books, status);
+  
 }
