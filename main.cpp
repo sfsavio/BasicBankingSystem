@@ -16,16 +16,11 @@ int main() {
     
     std::vector<std::string> books; 
     std::vector<std::string> status;
-    
-   
-
-    
+        
     books.shrink_to_fit();
     //std::cout << books.size();
    
-    checkBook(books, status);
-
-    
+    checkBook(books, status); 
 
     return 0;
 }
@@ -37,7 +32,7 @@ std::string checkBook(std::vector<std::string> books, std::vector<std::string> s
     for (int i = 0; i < books.size(); i++)
     {
         if (bookName == books[i]){
-            std::cout << "Book Found In Position: " << i << " -> book_name: " << books[i] << std::endl;
+            std::cout << "Book Found In Position: " << i << std::endl;
             std::cout << status[i];
             checkBook(books, status);
         } else {
@@ -54,11 +49,24 @@ std::string createBook(std::vector<std::string> books, std::string bookName, std
     std::string status_positivo = "status: Disponivel";
     std::string status_negativo = "status: Indisponivel";
     status.push_back(status_positivo);
-
+    std::cout << std::endl << std::endl;
     for (int i = 0; i < books.size(); i++) {
         std::cout <<"Book: " << books[i] << "\t\t\t" << status[i] << "\n";
     }
+    std::string op;
+    std::cout << "Deseja adcionar um novo livro? (sim / nao) \n";
+    std::getline(std::cin, op);
 
-    checkBook(books, status);
+    while (true) {
+        if (op == "sim") {
+            checkBook(books, status);
+        }
+        else {
+            std::cout << "\n\nsaindo..";
+            break;
+        }
+        break;
+    }
+    /*checkBook(books, status);*/
   
 }
