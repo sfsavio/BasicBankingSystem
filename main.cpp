@@ -29,11 +29,13 @@ int main() {
         case 1:
               checkBook(books, status);   
               break;
+        case 2:
+
         default:
               std::cout<<"default";
         break;
     }
-
+        
     
     
    // checkBook(books, status); 
